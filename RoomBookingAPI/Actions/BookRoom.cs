@@ -1,4 +1,4 @@
-﻿namespace RoomBookingAPI;
+﻿namespace RoomBookingAPI.Actions;
 
 public class BookRoom
 {

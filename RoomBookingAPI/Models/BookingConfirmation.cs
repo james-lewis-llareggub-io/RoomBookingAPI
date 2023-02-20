@@ -1,4 +1,4 @@
-﻿namespace RoomBookingAPI;
+﻿namespace RoomBookingAPI.Models;
 
 public class BookingConfirmation
 {
