@@ -2,5 +2,10 @@
 
 public class BookingConfirmation
 {
-    public BookingRequest BookingRequest { get; set; }
+    public BookingConfirmation(BookingRequest bookingRequest)
+    {
+        BookingRequest = bookingRequest;
+    }
+
+    public BookingRequest BookingRequest { get; }
 }

@@ -4,6 +4,6 @@ public class BookRoom
 {
     public BookingConfirmation Process(BookingRequest request)
     {
-        throw new NotImplementedException();
+        return new BookingConfirmation(request);
     }
 }
