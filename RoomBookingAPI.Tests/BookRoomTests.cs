@@ -22,4 +22,14 @@ public class BookRoomTests
         Assert.Equal(request.Email, confirmation.BookingRequest.Email);
         Assert.Equal(request.Date, confirmation.BookingRequest.Date);
     }
+
+    [Fact]
+    public void Should_throw_null_exception_if_request_fullname_is_empty()
+    {
+        var request = new BookingRequest();
+
+        var bookRoom = new BookRoom();
+        var exception = Assert.Throws<ArgumentNullException>(() => { bookRoom.Process(request); });
+        Assert.Equal("FullName", exception.ParamName);
+    }
 }
