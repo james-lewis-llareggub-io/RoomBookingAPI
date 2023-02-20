@@ -1,4 +1,4 @@
-namespace RoomBookingAPI.Tests;
+namespace RoomBookingAPI;
 
 public class BookRoomTests
 {
