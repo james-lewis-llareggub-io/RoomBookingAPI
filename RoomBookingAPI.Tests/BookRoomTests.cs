@@ -2,8 +2,8 @@ namespace RoomBookingAPI;
 
 public class BookRoomTests
 {
-    private readonly BookRoom _bookRoom;
     private readonly BookingRequest _bookingRequest;
+    private readonly BookRoom _bookRoom;
 
     public BookRoomTests()
     {
@@ -15,7 +15,7 @@ public class BookRoomTests
             Date = DateTime.Now
         };
     }
-    
+
     [Fact]
     public void Should_return_booking_confirmation_with_original_request()
     {
