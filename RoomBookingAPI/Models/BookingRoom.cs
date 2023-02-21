@@ -1,5 +1,5 @@
 ﻿namespace RoomBookingAPI.Models;
 
-public class Room
+public class BookingRoom
 {
 }

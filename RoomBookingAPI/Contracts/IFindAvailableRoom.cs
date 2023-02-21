@@ -2,5 +2,5 @@
 
 public interface IFindAvailableRoom
 {
-    Room? Process(BookingRequest request);
+    BookingRoom? Process(BookingRequest request);
 }

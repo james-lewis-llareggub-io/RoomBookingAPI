@@ -5,7 +5,7 @@ public class BookingConfirmation
     public BookingConfirmation(
         BookingRequest bookingRequest,
         BookingStatusFlag bookingStatusFlag,
-        Room? room
+        BookingRoom? room
     )
     {
         BookingRequest = bookingRequest;
@@ -15,5 +15,5 @@ public class BookingConfirmation
 
     public BookingRequest BookingRequest { get; }
     public BookingStatusFlag BookingStatusFlag { get; }
-    public Room? Room { get; }
+    public BookingRoom? Room { get; }
 }

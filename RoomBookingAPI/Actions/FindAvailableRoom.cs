@@ -2,9 +2,9 @@
 
 public class FindAvailableRoom : IFindAvailableRoom
 {
-    public Room? Process(BookingRequest request)
+    public BookingRoom? Process(BookingRequest request)
     {
         var daysNotice = (request.Date.Date - DateTime.Today).TotalDays;
-        return daysNotice >= 1 ? new Room() : null;
+        return daysNotice >= 1 ? new BookingRoom() : null;
     }
 }
