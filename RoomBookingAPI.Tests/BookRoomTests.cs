@@ -1,11 +1,13 @@
+using RoomBookingAPI.Models.enums;
+
 namespace RoomBookingAPI;
 
-public class BookRoomTests
+public abstract class BookRoomTests
 {
     private readonly BookingRequest _bookingRequest;
     private readonly BookRoom _bookRoom;
 
-    public BookRoomTests()
+    protected BookRoomTests()
     {
         _bookRoom = new BookRoom();
         _bookingRequest = new BookingRequest
@@ -16,15 +18,25 @@ public class BookRoomTests
         };
     }
 
-    [Fact]
-    public void Should_return_booking_confirmation_with_original_request()
+    public class CheckBookingConfirmationProperties : BookRoomTests
     {
-        var confirmation = _bookRoom.Process(_bookingRequest);
-        confirmation.BookingRequest.Should().NotBeNull();
-        var actual = confirmation.BookingRequest;
-        actual.FullName.Should().Be(_bookingRequest.FullName);
-        actual.Email.Should().Be(_bookingRequest.Email);
-        actual.Date.Should().Be(_bookingRequest.Date);
+        [Fact]
+        public void Should_return_booking_confirmation_with_original_request()
+        {
+            var confirmation = _bookRoom.Process(_bookingRequest);
+            confirmation.BookingRequest.Should().NotBeNull();
+            var actual = confirmation.BookingRequest;
+            actual.FullName.Should().Be(_bookingRequest.FullName);
+            actual.Email.Should().Be(_bookingRequest.Email);
+            actual.Date.Should().Be(_bookingRequest.Date);
+        }
+
+        [Fact]
+        public void Should_return_booking_confirmation_with_success_flag()
+        {
+            var confirmation = _bookRoom.Process(_bookingRequest);
+            confirmation.BookingStatusFlag.Should().Be(BookingStatusFlag.Successful);
+        }
     }
 
     public class NullRequestParameters : BookRoomTests
