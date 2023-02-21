@@ -43,10 +43,12 @@ public abstract class BookRoomTests
         [InlineData(false)]
         public void Should_return_booking_confirmation_with_room(bool available)
         {
+            if (available)
+                _bookingRequest.Date = _bookingRequest.Date.AddDays(1);
             var confirmation = _bookRoom.Process(_bookingRequest);
             if (available)
-                confirmation.Room.Should().BeNull();
-            else confirmation.Room.Should().NotBeNull();
+                confirmation.Room.Should().NotBeNull();
+            else confirmation.Room.Should().BeNull();
         }
     }
 
