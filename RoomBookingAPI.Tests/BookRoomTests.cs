@@ -9,7 +9,7 @@ public abstract class BookRoomTests
 
     protected BookRoomTests()
     {
-        _bookRoom = new BookRoom();
+        _bookRoom = new BookRoom(new FindAvailableRoom());
         _bookingRequest = new BookingRequest
         {
             FullName = "Test Name",
@@ -36,6 +36,17 @@ public abstract class BookRoomTests
         {
             var confirmation = _bookRoom.Process(_bookingRequest);
             confirmation.BookingStatusFlag.Should().Be(BookingStatusFlag.Successful);
+        }
+
+        [Theory]
+        [InlineData(true)]
+        [InlineData(false)]
+        public void Should_return_booking_confirmation_with_room(bool available)
+        {
+            var confirmation = _bookRoom.Process(_bookingRequest);
+            if (available)
+                confirmation.Room.Should().BeNull();
+            else confirmation.Room.Should().NotBeNull();
         }
     }
 
